@@ -1,3 +1,4 @@
+/* Basic reset and layout */
 body {
     display: flex;
     justify-content: center;
@@ -5,19 +6,84 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #ffebcc;
+    overflow: hidden;
 }
 
 .container {
     text-align: center;
+    position: relative;
+    max-width: 90vw; /* Maximum width for responsiveness */
 }
 
-#catImage {
-    width: 200px;
+/* Title Styling */
+.title {
+    font-size: 5vw; /* Responsive font size based on viewport width */
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    text-shadow: 3px 3px 0 #f9c74f, -3px -3px 0 #f9c74f, -3px 3px 0 #f9c74f, 3px -3px 0 #f9c74f;
+    margin-bottom: 5vh; /* Increased space below the title */
+}
+
+/*  Image Styling */
+#alienImage {
+    width: 60vw; /* Responsive width */
+    max-width: 400px; /* Maximum width for large screens */
     cursor: pointer;
+    transition: transform 0.1s ease;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+    margin-bottom: 4vh; /* Increased space below the image */
 }
 
+#alienImage.pop {
+    transform: scale(1.1); /* Zoom in when clicked */
+}
+
+/* Counter Styling */
 #counter {
-    font-size: 2em;
-    margin-top: 10px;
+    font-size: 8vw; /* Responsive font size based on viewport width */
+    font-weight: bold;
+    margin-top: 1vh;
+    color: #333;
+    text-shadow: 2px 2px 0 #f9c74f, -2px -2px 0 #f9c74f;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* MIAO Text Styling */
+#miao {
+    font-size: 0.6em; /* Smaller than the counter */
+    margin-left: 0.3em;
+    color: #ff5c5c;
+    opacity: 1;
+    transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+/* Add a pop effect to "MIAO" on click */
+.miao-pop {
+    transform: scale(1.2); /* Slightly larger for emphasis */
+    opacity: 0.8;
+}
+
+/* Add a simple animation for pop effect */
+@keyframes popAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Make image responsive for mobile, tablet, and desktop */
+@media (max-width: 768px) {
+    #alienImage {
+        width: 80vw; /* Larger on small screens */
+    }
+}
+
+@media (min-width: 1200px) {
+    #alienImage {
+        width: 40vw; /* Smaller on very large screens */
+    }
 }

@@ -1,16 +1,29 @@
 let count = 0;
-const catImage = document.getElementById("alienImage");
+const alienImage = document.getElementById("alienImage");
 const counterDisplay = document.getElementById("counter");
+const miaoDisplay = document.getElementById("miao"); // "MIAO" element
 
-function clickCat() {
+// Load a pop sound for the click
+const popSound = new Audio('pop.mp3'); 
+
+function clickAlien() {
     count++;
-    counterDisplay.textContent = count;
+    counterDisplay.childNodes[0].nodeValue = count + " "; // Update only the number part
+
+    // Play sound
+    popSound.play();
+
+
+    alienImage.classList.add("pop");
+    miaoDisplay.classList.add("miao-pop"); // Add animation to "MIAO" text
 
     // Change the image briefly on click
-    catImage.src = "alien2.jpg"; // This is the "clicked" image
+    alienImage.src = "cat2.jpg";
 
-    // Change back to original after a short delay
+   
     setTimeout(() => {
-        catImage.src = "alien1.jpg";
-    }, 100); // Adjust timing as desired
+        alienImage.src = "cat1.jpg";
+        alienImage.classList.remove("pop");
+        miaoDisplay.classList.remove("miao-pop"); 
+    }, 300); 
 }
